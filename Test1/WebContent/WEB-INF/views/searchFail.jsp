@@ -4,15 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>errorPage.jsp</title>
+<title>searchFail.jsp</title>
 </head>
 <body>
-
-	<%@ include file = "menubar.jsp" %>
-	
-	<br><br>
-
-	<h1 align="center" style="color:red;"><%= request.getAttribute("errorMsg") %></h1>
-
+	<h1><%= request.getAttribute("errorMsg") %></h1>
+	<br>
+	<a href="/Test1">메인페이지로 돌아가기</a>
 </body>
 </html>
