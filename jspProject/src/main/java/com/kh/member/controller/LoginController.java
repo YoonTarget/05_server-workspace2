@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kh.member.model.service.MemberService;
 import com.kh.member.model.vo.Member;
@@ -69,7 +70,29 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
 			view.forward(request, response);
 		} else {
-			// 조회결과 있음 == 로그인 성공!!
+			// 조회결과 있음 == 로그인 성공!! => 메인페이지 응답 (index.jsp)
+			
+			// 로그인한 회원정보 (loginMember)를 session에 담기!! (여기저기서 가져다 쓸 수 있도록)
+			
+			// Servlet에서는 session에 접근하고자 한다면 우선 세션 객체 얻어와야됨
+			HttpSession session = request.getSession();
+			session.setAttribute("loginMember", loginMember);
+			
+			// 1. 포워딩 방식 응답 뷰 출력
+			// 해당 선택된 jsp가 보여질 뿐 url에는 여전히 현재 이 서블릿의 매핑값이 남아있음
+			// localhost:8001/jsp/login.me
+			// RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+			// RequestDispatcher view = request.getRequestDispatcher("views/common/successPage.jsp");
+			// view.forward(request, response);
+			
+			// 2. url 재요청 방식 (sendRedirect 방식)
+			// 기존에 저 페이지를 응답하는 url이 존재한다면 사용 가능
+			// localhost:8001/jsp
+			
+			// response.sendRedirect("/jsp");
+			
+			response.sendRedirect(request.getContextPath()); // = /jsp
+			
 		}
 		
 	}

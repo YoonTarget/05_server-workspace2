@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Member {
 	
+	// 전역변수
 	private int userNo;
 	private String userId;
 	private String userPwd;
@@ -19,7 +20,7 @@ public class Member {
 	// 기본생성자
 	public Member() {}
 
-	// 매개변수 생성자
+	// 전체 매개변수 생성자
 	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email,
 			String address, String interest, Date enrollDate, Date modifyDate, String status) {
 		super();
@@ -36,6 +37,19 @@ public class Member {
 		this.status = status;
 	}
 	
+	// 회원가입용 매개변수 생성자
+	public Member(String userId, String userPwd, String userName, String phone, String email, String address,
+			String interest) {
+		super();
+		this.userId = userId;
+		this.userPwd = userPwd;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.interest = interest;
+	}
+
 	// getter-setter
 	public int getUserNo() {
 		return userNo;
