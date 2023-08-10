@@ -45,6 +45,9 @@
     .menu a:hover {
         background-color: darkgray;
     }
+    h1 {
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -59,7 +62,7 @@
 		
 	<% } %>
 
-    <h1 align="center">Welcome to Target's World</h1>
+    <h1 align="center" onclick="home();">Welcome to Target's World</h1>
 
     <div class="login-area">
     
@@ -95,6 +98,12 @@
                     location.href="<%= contextPath %>/enrollForm.me";
 
                 }
+                
+                function home() {
+
+                    location.href = "<%= contextPath %>";
+
+                }
 
             </script>
 
@@ -119,7 +128,7 @@
     <br>
     
     <div class="nav-area" align="center">
-        <div class="menu"><a href="">HOME</a></div>
+        <div class="menu"><a href="<%= contextPath %>">HOME</a></div>
         <div class="menu"><a href="">공지사항</a></div>
         <div class="menu"><a href="">일반게시판</a></div>
         <div class="menu"><a href="">사진게시판</a></div>

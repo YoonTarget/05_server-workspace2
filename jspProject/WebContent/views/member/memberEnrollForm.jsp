@@ -44,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>* 비밀번호 확인</td>
-                    <td><input type="password" maxlength="15" required></td>
+                    <td><input type="password" name="checkPwd" maxlength="15" required></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -94,11 +94,31 @@
             <br><br>
 
             <div align="center">
-                <button type="submit">회원가입</button>
+                <button type="submit" onclick="return check();">회원가입</button>
                 <button type="reset">초기화</button>
             </div>
 
+        <script>
+
+            function check() {
+
+                let checkPwd = document.getElementsByName("checkPwd")[0];
+
+                if((document.getElementsByName("userPwd")[1]).value != checkPwd.value) {
+                    alert("비밀번호가 일치하지 않습니다.");
+                   
+                    checkPwd.value = "";
+                    checkPwd.focus();
+
+                    return false;
+                }
+
+            }
+
+        </script>
+
         </form>
+
 
     </div>
 

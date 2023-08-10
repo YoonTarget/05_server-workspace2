@@ -49,6 +49,17 @@ public class Member {
 		this.address = address;
 		this.interest = interest;
 	}
+	
+	// 정보변경용 매개변수 생성자
+	public Member(String userId, String userName, String phone, String email, String address, String interest) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.phone = phone;
+		this.email = email;
+		this.address = address;
+		this.interest = interest;
+	}
 
 	// getter-setter
 	public int getUserNo() {
