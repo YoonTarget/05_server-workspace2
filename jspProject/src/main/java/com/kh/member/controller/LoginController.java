@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
 		// 3) 요청처리 (db에 sql문 실행)
 		//	  해당 요청을 처리하는 서비스 클래스의 메소드 호출 및 결과 받기
 		Member loginMember = new MemberService().loginMember(userId, userPwd);
-		System.out.println(loginMember);
+//		System.out.println(loginMember);
 		
 		// 4) 처리된 결과를 가지고 사용자가 보게 될 응답뷰 (jsp) 지정 후 포워딩 또는 url 재요청
 		

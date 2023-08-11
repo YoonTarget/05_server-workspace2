@@ -208,27 +208,34 @@ public class MemberDao {
 	
 	public int deleteMember(Connection conn, String userId, String userPwd) {
 		
+		// 처리된 행 수를 받아줄 변수 초기화
 		int result = 0;
 		
+		// sql문 처리를 위한 변수 초기화
 		PreparedStatement pstmt = null;
 		
+		// xml 파일에 작성된 sql문 불러오기
 		String sql = prop.getProperty("deleteMember");
 		
 		try {
-			
+			// sql문과 연결할 준비
 			pstmt = conn.prepareStatement(sql);
 			
+			// ?로 처리된 값에 매개변수 입력
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			
+			// 완성된 sql문으로 처리된 행 수 받기
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
+			// sql문 처리 작업이 끝났으니 객체 반납
 			close(pstmt);
 		}
 		
+		// 처리된 행 수 반환
 		return result;
 		
 	}

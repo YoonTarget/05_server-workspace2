@@ -22,7 +22,7 @@ public class JDBCTemplate {
 		String filepath = JDBCTemplate.class.getResource("/db/driver/driver.properties").getPath();
 		// C:/05_server-workspace2/jspProject/WebContent/WEB-INF/classes/db/driver/driver.properties
 		
-		System.out.println("filepath : " + filepath);
+//		System.out.println("filepath : " + filepath);
 		
 		try {
 //			prop.load(new FileInputStream("driver.properties 파일의 경로"));
@@ -49,7 +49,7 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Connection 읽었다잉");
+//		System.out.println("Connection 읽었다잉");
 		
 		return conn;
 		

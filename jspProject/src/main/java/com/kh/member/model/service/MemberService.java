@@ -90,19 +90,25 @@ public class MemberService {
 	
 	public int deleteMember(String userId, String userPwd) {
 		
+		// db와 연결할 수 있는 객체 생성
 		Connection conn = getConnection();
 		
+		// MemberDao의 결과값을 반환받기
 		int result = new MemberDao().deleteMember(conn, userId, userPwd);
 		
+		// 성공했을 경우에는 결과를 commit
 		if(result > 0) {
 			commit(conn);
 		}
+		// 실패했을 경우에는 결과를 rollback
 		else {
 			rollback(conn);
 		}
 		
+		// db와 연결해서 수행하는 작업이 끝났으니 객체 반납
 		close(conn);
 		
+		// 결과값 반환
 		return result;
 		
 	}

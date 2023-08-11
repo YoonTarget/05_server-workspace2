@@ -209,7 +209,10 @@
 	        <form action="<%= contextPath %>/delete.me" method="post">
                 <b>탈퇴 후 복구가 불가능 합니다. <br> 정말로 탈퇴하시겠습니까? </b> <br><br>
 				
+				<!-- 아이디 -->
+				<!-- sql문과 작업을 할 때 아이디도 필요하기 때문에 type을 hidden으로 줘서 같이 controller로 보낸다 -->
 				<input type="hidden" name="userId" value="<%= userId %>">
+				
                 비밀번호 : <input type="password" name="userPwd" required> <br><br>
                 <button type="submit" class="btn btn-sm btn-danger">탈퇴하기</button>
                 
