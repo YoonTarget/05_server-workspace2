@@ -73,7 +73,7 @@
 		
 	<% } %>
 
-    <h1 align="center" onclick="home();">Welcome to Target's World</h1>
+    <h1 align="center">Welcome to Target's World</h1>
 
     <div class="login-area">
     
@@ -141,7 +141,7 @@
     <div class="nav-area" align="center">
         <div class="menu"><a href="<%= contextPath %>">HOME</a></div>
         <div class="menu"><a href="<%= contextPath %>/list.no">공지사항</a></div>
-        <div class="menu"><a href="">일반게시판</a></div>
+        <div class="menu"><a href="<%= contextPath %>/list.bo?cpage=1">일반게시판</a></div>
         <div class="menu"><a href="">사진게시판</a></div>
     </div>
 
