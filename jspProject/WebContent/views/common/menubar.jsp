@@ -73,7 +73,7 @@
 		
 	<% } %>
 
-    <h1 align="center">Welcome to Target's World</h1>
+    <h1 align="center" onclick="home();">Welcome to Target's World</h1>
 
     <div class="login-area">
     
