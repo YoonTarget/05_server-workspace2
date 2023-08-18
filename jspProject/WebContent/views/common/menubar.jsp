@@ -108,13 +108,13 @@
                     // 단순한 페이지 요청도 servlet 호출해서 servlet 거쳐갈 것!! (즉, url에는 서블릿 매핑값만 노출)
                     location.href="<%= contextPath %>/enrollForm.me";
 
-                }
+                };
                 
                 function home() {
 
                     location.href = "<%= contextPath %>";
 
-                }
+                };
 
             </script>
 
