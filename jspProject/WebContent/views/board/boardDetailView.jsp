@@ -5,7 +5,7 @@
 <%
 	Board b = (Board)request.getAttribute("b");
 	// 글번호, 카테고리명, 제목, 내용, 작성자, 작성일
-
+	
 	Attachment at = (Attachment)request.getAttribute("at");
 	// 첨부파일이 없다면 null
 	// 첨부파일이 있다면 파일번호, 원본명, 수정본명, 저장경로
