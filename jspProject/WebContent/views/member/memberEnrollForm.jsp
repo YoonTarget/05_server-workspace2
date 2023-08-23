@@ -94,33 +94,60 @@
             <br><br>
 
             <div align="center">
-                <button type="submit" onclick="return check();">회원가입</button>
+                <button type="submit" disabled onclick="return check();">회원가입</button>
                 <button type="reset">초기화</button>
             </div>
 
-        <script>
-
-            function check() {
-
-                let checkPwd = document.getElementsByName("checkPwd")[0];
-
-                if((document.getElementsByName("userPwd")[1]).value != checkPwd.value) {
-                    alert("비밀번호가 일치하지 않습니다.");
-                   
-                    checkPwd.value = "";
-                    checkPwd.focus();
-
-                    return false;
-                }
-
-            }
-
-        </script>
 
         </form>
 
 
     </div>
+    
+    <script>
+
+        function check() {
+
+            let checkPwd = document.getElementsByName("checkPwd")[0];
+
+            if((document.getElementsByName("userPwd")[1]).value != checkPwd.value) {
+                alert("비밀번호가 일치하지 않습니다.");
+               
+                checkPwd.value = "";
+                checkPwd.focus();
+
+                return false;
+            }
+
+        }
+        
+        function idCheck() {
+        	
+        	// 중복확인 버튼 클릭시 사용자가 입력한 아이디값을 넘겨서 조회요청(존재하는지 안하는지) => 응답데이터 돌려받기
+        	// 1) 사용불가능일 경우 => alert로 메세지 출력, 다시 입력할 수 있도록 유도
+        	// 2) 사용 가능일 경우 => 진짜 사용할건지 의사를 물어볼거임
+        	//						> 사용하겠다는 경우 => 더이상 아이디 수정 못하게끔, 회원가입버튼 활성화
+        	//						> 사용 안하겠다는 경우 => 다시 입력할 수 있도록 유도
+        	
+        	// 아이디를 입력하는 input 요소 객체
+        	const $idInput = $("#enroll-form input[name=userId]");
+        	
+        	$.ajax({
+        		
+        		url:"idCheck.me",
+        		data:{checkId:$idInput.val()},
+        		success:function(result){
+        			console.log(result);
+        		},
+        		error:function(){
+        			console.log("아이디 중복체크용 ajax 통신 실패!!");
+        		},
+        		
+        	});
+        	
+        }
+
+    </script>
 
 </body>
 </html>
