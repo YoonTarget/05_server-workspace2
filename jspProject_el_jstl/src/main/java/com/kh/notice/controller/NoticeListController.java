@@ -37,7 +37,6 @@ public class NoticeListController extends HttpServlet {
 		// 3) 요청처리(응답페이지에 필요한 데이터를 조회)
 		ArrayList<Notice> list = new NoticeService().selectNoticeList();
 		
-		
 		// 4) 응답뷰 지정 => 공지사항 목록페이지
 		// 	  응답뷰에 필요한 데이터는 request attribute 영역에 담기 (포워딩)
 

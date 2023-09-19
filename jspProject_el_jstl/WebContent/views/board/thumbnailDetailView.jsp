@@ -4,7 +4,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +61,7 @@
                 <td>상세사진</td>
                 <td colspan="3">
                     <div>
-                    <c:forEach var="i" begin="0" end="${ list.size() - 1 }">
+                    <c:forEach var="i" begin="1" end="${ list.size() - 1 }">
 	                    	<img src="${ list[i].filePath }/${ list[i].changeName }" width="200" height="150">
                     </c:forEach>
                     </div>
