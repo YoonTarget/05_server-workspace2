@@ -2,9 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	ArrayList<Category> list = (ArrayList<Category>)request.getAttribute("list");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,28 +28,28 @@
 </style>
 </head>
 <body>
-	<%@ include file = "../common/menubar.jsp" %>
+	<jsp:include page="../common/menubar.jsp"></jsp:include>
 
     <div class="outer">
         <br>
         <h2 align="center">일반게시판 작성하기</h2>
         <br>
 
-        <form id="enroll-form" action="<%= contextPath %>/insert.bo" method="post" enctype="multipart/form-data">
+        <form id="enroll-form" action="insert.bo" method="post" enctype="multipart/form-data">
 
             <!-- 카테고리, 제목, 내용, 첨부파일 1개, 로그인한 회원번호 -->
-            <input type="hidden" name="userNo" value="<%= loginMember.getUserNo() %>">
+            <input type="hidden" name="userNo" value="${ loginMember.userNo }">
             <table align="center">
                 <tr>
                     <th width="70">카테고리</th>
                     <td width="500">
                         <select name="category">
                             <!-- category 테이블로부터 조회해오기 -->
-                            <% if(!list.isEmpty()) { %>
-	                        	<% for(Category c : list) { %>
-	                            	<option value="<%= c.getCategoryNo() %>"><%= c.getCategoryName() %></option>
-	                            <% } %>
-                            <% } %>
+                            <c:if test="${ not empty list }">
+                            	<c:forEach var="c" items="${ list }">
+	                            	<option value="${ c.categoryNo }">${ c.categoryName }</option>
+	                            </c:forEach>
+                            </c:if>
                         </select>
                     </td>
                 </tr>

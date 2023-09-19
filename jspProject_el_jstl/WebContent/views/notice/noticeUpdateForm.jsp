@@ -1,9 +1,7 @@
 <%@page import="com.kh.notice.model.vo.Notice"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	Notice n = (Notice)request.getAttribute("n");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,21 +27,21 @@
 </style>
 </head>
 <body>
-    <%@ include file="../common/menubar.jsp" %>
+    <jsp:include page="../common/menubar.jsp"></jsp:include>
     
 	<div class="outer" align="center">
         <br>
         <h2>공지사항 수정하기</h2>
         <br>
 
-        <form action="<%= contextPath %>/update.no" id="update-form" method="post">
+        <form action="update.no" id="update-form" method="post">
 	
-			<input type="hidden" name="num" value="<%= n.getNoticeNo() %>">
+			<input type="hidden" name="num" value="${ n.noticeNo }">
 			
             <table>
                 <tr>
                     <th width="50">제목</th>
-                    <td width="450"><input type="text" name="title" required value="<%= n.getNoticeTitle() %>"></td>
+                    <td width="450"><input type="text" name="title" required value="${ n.noticeTitle }"></td>
                 </tr>
                 <tr>
                     <th>내용</th>
@@ -51,7 +49,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea name="content" cols="27" rows="10" style="resize: none;" required><%= n.getNoticeContent() %></textarea>
+                        <textarea name="content" cols="27" rows="10" style="resize: none;" required>${ n.noticeContent }</textarea>
                     </td>
                 </tr>
             </table>

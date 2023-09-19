@@ -3,10 +3,8 @@
 <%@page import="com.kh.board.model.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	Board b = (Board)request.getAttribute("b");
-	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +26,7 @@
 </style>
 </head>
 <body>
-	<%@ include file = "../common/menubar.jsp" %>
+	<jsp:include page="../common/menubar.jsp"></jsp:include>
 
     <div class="outer">
         <br>
@@ -38,35 +36,35 @@
         <table class="detail-area" align="center">
             <tr>
                 <td width="70">제목</td>
-                <td colspan="3" width="600"> <%= b.getBoardTitle() %></td>
+                <td colspan="3" width="600"> ${ b.boardTitle }</td>
             </tr>
             <tr>
                 <td>작성자</td>
-                <td><%= b.getBoardWriter() %></td>
+                <td>${ b.boardWriter }</td>
                 <td>작성일</td>
-                <td><%= b.getCreateDate() %></td>
+                <td>${ b.createDate }</td>
             </tr>
             <tr>
                 <td>내용</td>
                 <td colspan="3">
                     <p style="height: 50px;">
-                        <%= b.getBoardContent() %>
+                        ${ b.boardContent }
                     </p>
                 </td>
             </tr>
             <tr>
                 <td>대표사진</td>
                 <td colspan="3">
-                    <img src="<%= contextPath %>/<%= list.get(0).getFilePath() %>/<%= list.get(0).getChangeName() %>" width="600" height="300">
+                    <img src="${ list[0].filePath }/${ list[0].changeName }" width="600" height="300">
                 </td>
             </tr>
             <tr>
                 <td>상세사진</td>
                 <td colspan="3">
                     <div>
-                    <% for(int i = 1; i < list.size(); i++) { %>
-                    	<img src="<%= contextPath %>/<%= list.get(i).getFilePath() %>/<%= list.get(i).getChangeName() %>" width="200" height="150">
-                    <% } %>
+                    <c:forEach var="i" begin="0" end="${ list.size() - 1 }">
+	                    	<img src="${ list[i].filePath }/${ list[i].changeName }" width="200" height="150">
+                    </c:forEach>
                     </div>
                 </td>
             </tr>
@@ -75,7 +73,7 @@
         <br>
         
         <div align="center">
-        	<a href="<%= contextPath %>/list.th" class="btn btn-sm btn-secondary">목록가기</a>
+        	<a href="list.th" class="btn btn-sm btn-secondary">목록가기</a>
         </div>
 
     </div>

@@ -2,9 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	ArrayList<Board> list = (ArrayList<Board>)request.getAttribute("list");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +33,7 @@
 </style>
 </head>
 <body>
-	<%@ include file = "../common/menubar.jsp" %>
+	<jsp:include page="../common/menubar.jsp"></jsp:include>
 
     <div class="outer">
         <br>
@@ -43,25 +41,24 @@
         <br>
 
         <!-- 로그인 한 회원만 보여짐 -->
-        <% if(loginMember != null) { %>
-        <div style="width: 850px;" align="right">
-            <a href="<%= contextPath %>/enrollForm.th" class="btn btn-sm btn-secondary">글작성</a>
-        </div>
-        <% } %>
+        <c:if test="${ not empty loginMember }">
+	        <div style="width: 850px;" align="right">
+	            <a href="enrollForm.th" class="btn btn-sm btn-secondary">글작성</a>
+	        </div>
+        </c:if>
 
         <div class="list-area">
             <!-- 썸네일 한 개 -->
-            <% for(Board b : list) { %>
+            <c:forEach var="b" items="${ list }">
 	            <div class="thumbnail" align="center">
-	            	<input type="hidden" value="<%= b.getBoardNo() %>">
-	                <img src="<%= contextPath %>/<%= b.getTitleImg() %>" width="200" height="150">
+	            	<input type="hidden" value="${ b.boardNo }">
+	                <img src="${ b.titleImg }" width="200" height="150">
 	                <p>
-	                    NO.<%= b.getBoardNo() %> <%= b.getBoardTitle() %> <br>
-	                    조회수 : <%= b.getCount() %>
+	                    NO.${ b.boardNo } ${ b.boardTitle } <br>
+	                    조회수 : ${ b.count }
 	                </p>
 	            </div>
-            <% } %>
-
+            </c:forEach>
         </div>
 
     </div>
@@ -70,7 +67,7 @@
     	$(function() {
     		
     		$(".thumbnail").click(function() {
-    			location.href = "<%= contextPath %>/detail.th?bno=" + $(this).children("input").val();
+    			location.href = "detail.th?bno=" + $(this).children("input").val();
     		});
     		
     	});

@@ -30,7 +30,7 @@
         <br>
         <h2 align="center">회원가입</h2>
 
-        <form id="enroll-form" action="<%= contextPath %>/insert.me" method="post">
+        <form id="enroll-form" action="insert.me" method="post">
             <table>
                 <tr>
                     <td>* 아이디</td>
